@@ -22,7 +22,7 @@ struct Fraction {
         string numerator = "";
         int i = 0;
         while(fraction[i] != '/'){
-            if((int(fraction[i]) < 47 || int(fraction[i]) > 57)) return res;
+            if(int(fraction[i]) < 47 || int(fraction[i]) > 57) return res;
             numerator += fraction[i++];
             if(i == n) return res;
         }
@@ -32,7 +32,7 @@ struct Fraction {
         //Gets denominator substring
         string denominator = "";
         for(int j = i+1; j < n; j++){
-            if((int(fraction[j]) < 48 || int(fraction[j]) > 57)) return res;
+            if(int(fraction[j]) < 48 || int(fraction[j]) > 57) return res;
             denominator += fraction[j];
         }
 

@@ -15,13 +15,10 @@ using namespace std;
  */
 int main(){
 
-   // cout << Fraction::convertDecimalToFraction(1.) << endl; //expected output: 1
-   // cout << Fraction::convertDecimalToFraction(.1) << endl; //expected output: 1/10
-   // cout << Fraction::convertDecimalToFraction(.5) << endl; //expected output: 1/2
-   // cout << Fraction::convertDecimalToFraction(1.5) << endl; //expected output: 3/2
-
-   cout << Fraction::simplifyFraction("2/4") << endl;
-
+   cout << Fraction::convertDecimalToFraction(1.) << endl; //expected output: 1
+   cout << Fraction::convertDecimalToFraction(.1) << endl; //expected output: 1/10
+   cout << Fraction::convertDecimalToFraction(.5) << endl; //expected output: 1/2
+   cout << Fraction::convertDecimalToFraction(1.5) << endl; //expected output: 3/2
 
    return 0;
 }
