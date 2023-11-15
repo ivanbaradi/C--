@@ -15,50 +15,24 @@ struct Fraction {
         vector <int> res;
         int n = fraction.size();
 
-        if(n == 0){
-            // cout << "Fraction is empty\n";
-            return res;
-        }
-
-        //There is no numerator
-        if(fraction[0] == '/'){
-            // cout << "Numerator cannot be empty\n";
-            return res;
-        }
+        if(n == 0) return res;
+        if(fraction[0] == '/') return res;
 
         //Gets numerator substring
         string numerator = "";
         int i = 0;
         while(fraction[i] != '/'){
-
-            if((int(fraction[i]) < 47 || int(fraction[i]) > 57)){
-                // cout << "Invalid numerator\n";
-                return res;
-            }
-
+            if((int(fraction[i]) < 47 || int(fraction[i]) > 57)) return res;
             numerator += fraction[i++];
-
-            if(i == n){
-                // cout << "This is not a fraction\n";
-                return res;
-            }
+            if(i == n) return res;
         }
 
-        if(i == n-1){
-            // cout << "Denominator cannot be empty\n";
-            return res;
-        }
+        if(i == n-1) return res;
 
         //Gets denominator substring
         string denominator = "";
         for(int j = i+1; j < n; j++){
-
-
-            if((int(fraction[j]) < 48 || int(fraction[j]) > 57)){
-                // cout << "Invalid denominator\n";
-                return res;
-            }
-
+            if((int(fraction[j]) < 48 || int(fraction[j]) > 57)) return res;
             denominator += fraction[j];
         }
 
@@ -90,7 +64,7 @@ struct Fraction {
 
 
     /**
-     * @todo WORK ON THIS LATER
+     * @todo CONTINUE WORKING ON IT 
      * @brief converts decimal value to fraction
      * 
      * @param num: number
@@ -102,8 +76,7 @@ struct Fraction {
         int n = numString.size();
         int i = 0; //stops at the decimal point
 
-        while(numString[i] != '.'){
-            i++;
+        while(numString[++i] != '.'){
             if (i == n) return numString;
         }
 
