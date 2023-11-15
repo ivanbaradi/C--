@@ -14,6 +14,7 @@ struct Fraction {
 
         vector <int> res;
         int n = fraction.size();
+        int minusCount = 0;
 
         if(n == 0) return res;
         if(fraction[0] == '/') return res;
@@ -22,7 +23,11 @@ struct Fraction {
         string numerator = "";
         int i = 0;
         while(fraction[i] != '/'){
-            if(int(fraction[i]) < 47 || int(fraction[i]) > 57) return res;
+
+            if(minusCount > 1) return res;
+            else if(fraction[i] == '-') minusCount++;
+            else if(int(fraction[i]) < 47 || int(fraction[i]) > 57) return res;
+            
             numerator += fraction[i++];
             if(i == n) return res;
         }
@@ -44,7 +49,7 @@ struct Fraction {
 
 
     /**
-     * @brief Simplifies the fraction
+     * @brief Simplifies the fraction (does not accept whole numbers)
      * 
      * @param fraction: fraction to simplify
      * @return simplified fraction
@@ -56,8 +61,8 @@ struct Fraction {
         if(numDem.empty()) return "Invalid fraction";
         int numerator = numDem[0], denominator = numDem[1];
         if(numerator % denominator == 0) return to_string(numerator/denominator);
-        int GCD = Integer::GCD(numerator, denominator);
-
+        int GCD = Integer::GCD(abs(numerator), denominator);
+        
         return to_string(numerator/GCD) + "/" + to_string(denominator/GCD);
     }
 
@@ -74,37 +79,27 @@ struct Fraction {
 
         string numString = to_string(num);
         int n = numString.size();
-        int i = 0; //stops at the decimal point
+        int i = 0;
 
-        while(numString[++i] != '.'){
-            if (i == n) return numString;
-        }
+        while(numString[++i] != '.');
+        string wholeNum = numString.substr(0,i);
 
-        //Decimal point happens to be the last character of "numString"
-        if(i == n-1) return numString.substr(0,i);
-
-        int j = i+1; //goes to the number after the decimal point
+        int j = i+1;
         int denominator = 1;
         string numeratorString = "";
 
         //Assigns numerator (string) and updates denominator
         while(j < n){
-            numeratorString += numString[j];
+            numeratorString += numString[j++];
             denominator *= 10;
-            j++;
         } 
 
-        string denominatorString = to_string(denominator);
-        int numerator = stoi(numeratorString);
+        string simplifiedFraction = simplifyFraction(numeratorString + "/" + to_string(denominator));
 
+        if(wholeNum == "0") return simplifiedFraction;
+        if(simplifiedFraction == "0") return wholeNum;
 
-
-
-
-
-
-
-        
+        return wholeNum + " " + simplifiedFraction;
     }
 
     
