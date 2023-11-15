@@ -4,7 +4,10 @@
 #include "Library/String.h"
 #include "Library/Array.h"
 #include "Library/Integer.h"
+#include "Library/Decimal.h"
+#include "Library/Fraction.h"
 using namespace std;
+
 
 /**
  * @brief Run program here
@@ -12,11 +15,7 @@ using namespace std;
  */
 int main(){
 
-   int a = 2, b = 31;
-
-   cout << "a = " << a << ", b = " << b << endl;
-   cout << "LCD of 'a' and 'b': " << Integer::LCD(a,b) << endl;
-   cout << "GCD of 'a' and 'b': " << Integer::GCD(a,b) << endl;
+   cout << Fraction::simplifyFraction("15/50") << endl; //expected output: 1/3
 
    return 0;
 }

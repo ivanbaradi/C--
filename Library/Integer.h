@@ -87,4 +87,22 @@ struct Integer{
 
         return 1;
     }
+
+
+
+    /**
+     * @brief Checks if the integer is a perfect square
+     * 
+     * @param num: integer to evaluate
+     * @return {true: integer is a perfect square, false: integer is not a perfect square}
+    */
+    static bool isPerfectSquare(int num){
+
+        for(int divisor = 1; divisor <= num; divisor++){
+            if(num / divisor == divisor)
+                return true;
+        }
+
+        return false;
+    }
 };
